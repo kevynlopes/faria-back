@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: imob-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: imobuser
+      POSTGRES_PASSWORD: imobpass
+      POSTGRES_DB: imobdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

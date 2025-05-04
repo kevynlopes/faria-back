@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("user")
+  createdAt DateTime @default(now())
+}
+
+model Property {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  price       Int
+  type        String
+  listingType String
+  location    String
+  city        String
+  country     String
+  address     String
+  bedrooms    Int
+  bathrooms   Float
+  area        Int
+  features    String[]
+  isFeatured  Boolean
+  isNew       Boolean
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  images Image[]
+}
+
+model Image {
+  id         String   @id @default(cuid())
+  url        String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  propertyId String
+}
