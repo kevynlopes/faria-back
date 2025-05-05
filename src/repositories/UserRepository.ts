@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import { prisma } from "../lib/prisma";
-import { Prisma } from "../generated/prisma";
+import { Prisma } from "@prisma/client";
 import { User } from "../lib/types";
 
 export default {
