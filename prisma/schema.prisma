@@ -52,6 +52,8 @@ model Property {
 model Image {
   id         String   @id @default(cuid())
   url        String
+  public_id  String?
   property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
   propertyId String
 }
+
