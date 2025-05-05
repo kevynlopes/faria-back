@@ -1,3 +1,5 @@
+import { Role } from "../generated/prisma";
+
 export type PropertyType =
   | "house"
   | "apartment"
@@ -32,9 +34,9 @@ export interface User {
   id: string;
   name: string;
   email: string;
-  role: "user" | "admin";
+  role: Role;
   password: string;
-  createdAt: string;
+  createdAt: Date;
 }
 
 export interface Project {

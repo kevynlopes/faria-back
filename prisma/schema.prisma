@@ -8,14 +8,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  user
+  admin
+  seller
+}
 
 model User {
   id        String   @id @default(uuid())
   name      String
   email     String   @unique
   password  String
-  role      String   @default("user") 
+  role      Role     @default(user)
   createdAt DateTime @default(now())
+
+  properties  Property[]
 }
 
 model Property {
@@ -39,6 +46,8 @@ model Property {
   updatedAt     DateTime   @updatedAt
 
   images        Image[] 
+  userId        String
+  user          User       @relation(fields: [userId], references: [id])
 }
 
 model Image {

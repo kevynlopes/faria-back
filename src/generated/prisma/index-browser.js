@@ -147,7 +147,8 @@ exports.Prisma.PropertyScalarFieldEnum = {
   isFeatured: 'isFeatured',
   isNew: 'isNew',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  userId: 'userId'
 };
 
 exports.Prisma.ImageScalarFieldEnum = {
@@ -165,7 +166,11 @@ exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 };
-
+exports.Role = exports.$Enums.Role = {
+  user: 'user',
+  admin: 'admin',
+  seller: 'seller'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
